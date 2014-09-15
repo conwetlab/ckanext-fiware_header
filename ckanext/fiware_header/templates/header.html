@@ -3,8 +3,8 @@
 {% block header_account %}
     
     {% resource 'fiware_header/header.css' %}
-    
-    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    {% resource 'fiware_header/jquery.js' %}
+
     <script src="https://account.lab.fi-ware.org/assets/signOut.js" type="text/javascript"></script>
 
     <header class="navbar">
@@ -113,7 +113,7 @@
                   {% if c.userobj.sysadmin %}
                       <li><a href="{{ h.url_for(controller='admin', action='index') }}">Sysadmin settings</a></li>
                   {% endif %}
-                  <li><a href="{{ h.url_for(controller='user', action='dashboard', id=c.userobj.name) }}">Dashboard</a></li>
+                  <li><a href="{{ h.url_for(controller='user', action='dashboard') }}">Dashboard</a></li>
                   <li class="divider">
                   </li>
                   <li>

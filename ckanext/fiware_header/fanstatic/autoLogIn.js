@@ -21,23 +21,31 @@
 
 (function() {
 
-    isUserLogged = $('#user_name').length > 0;
+    var isUserLogged = $('#user_name').length > 0;
+    var initialLogInText = $('#log_in').text();
     $('#log_in').text('Verifying credentials...');
 
+    var restoreLogInText = function() {
+        $('#log_in').text(initialLogInText);
+    }
+
     if (!isUserLogged) {
-        var req = new XMLHttpRequest()
-        req.open('GET', 'https://account.lab.fi-ware.org/user', true)
-        req.withCredentials = true
-        req.setRequestHeader('X-Requested-With', 'XMLHttpRequest')
+        var req = new XMLHttpRequest();
+        req.open('GET', 'https://account.lab.fi-ware.org/user', true);
+        req.withCredentials = true;
+        req.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
         req.onload = function() {
             if (this.status == 200) {
                 $('#log_in').text('Signing in...');
                 $('#log_in').click();
             } else {
-                $('#log_in').text('Sign in');
+                restoreLogInText();
             }
         }
-        req.send()
+        req.onerror = restoreLogInText;
+        req.ontimeout = restoreLogInText;
+        req.onabort = restoreLogInText;
+        req.send();
     }
 
 })()

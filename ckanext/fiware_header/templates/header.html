@@ -3,9 +3,8 @@
 {% block header_account %}
     
     {% resource 'fiware_header/header.css' %}
-    {% resource 'fiware_header/jquery.js' %}  
+    {% resource 'fiware_header/jquery.js' %}
     {% resource 'fiware_header/loadSignOut.js' %}
-    {% resource 'fiware_header/autoLogIn.js' %}
 
     <header class="navbar">
       <nav class="navbar-inner">
@@ -97,7 +96,7 @@
               <li>
                 <a href="{{ h.url_for(controller='user', action='read', id=c.userobj.name) }}" title="{{ _('View profile') }}">                
                   <img src="/img/user.png">
-                  <span class="name" id="user_name">
+                  <span class="name">
                     {{ c.userobj.display_name }}
                   </span>
                 </a>
@@ -124,6 +123,7 @@
                 </ul>
               </li>
             {% else %}
+              {% resource 'fiware_header/autoLogIn.js' %}
               <li>
                 <a href="{{ h.url_for(controller='user', action='login') }}" title="{{ _('Sign in') }}">                
                   <span id="log_in" class="name" >

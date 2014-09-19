@@ -20,16 +20,24 @@
  */
 
 (function() {
-    
-    url = 'https://account.lab.fi-ware.org/assets/signOut.js'
 
-    // Adding the script tag to the body
-    var body = document.getElementsByTagName('body')[0];
-    var script = document.createElement('script');
-    script.type = 'text/javascript';
-    script.src = url;
+    isUserLogged = $('#user_name').length > 0;
+    $('#log_in').text('Verifying credentials...');
 
-    // Fire the loading
-    body.appendChild(script);
+    if (!isUserLogged) {
+        var req = new XMLHttpRequest()
+        req.open('GET', 'https://account.lab.fi-ware.org/user', true)
+        req.withCredentials = true
+        req.setRequestHeader('X-Requested-With', 'XMLHttpRequest')
+        req.onload = function() {
+            if (this.status == 200) {
+                $('#log_in').text('Signing in...');
+                $('#log_in').click();
+            } else {
+                $('#log_in').text('Sign in');
+            }
+        }
+        req.send()
+    }
 
-})();
+})()

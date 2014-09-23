@@ -90,8 +90,6 @@
         </ul>
 
         <ul class="nav pull-right">
-
-
             {% if c.userobj %}
               <li>
                 <a href="{{ h.url_for(controller='user', action='read', id=c.userobj.name) }}" title="{{ _('View profile') }}">                

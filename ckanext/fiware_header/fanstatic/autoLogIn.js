@@ -21,28 +21,34 @@
 
 (function() {
 
-    var initialLogInText = $('#log_in').text();
-    $('#log_in').text('Verifying credentials...');
+    var IDM_HOST = 'https://account.lab.fi-ware.org'
 
-    var restoreLogInText = function() {
-        $('#log_in').text(initialLogInText);
-    }
+    // Avoid loops when the IDM Authentication fails...
+    if (document.referrer.indexOf(IDM_HOST + '/authorize') < 0) {
 
-    var req = new XMLHttpRequest();
-    req.open('GET', 'https://account.lab.fi-ware.org/user', true);
-    req.withCredentials = true;
-    req.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
-    req.onload = function() {
-        if (this.status == 200) {
-            $('#log_in').text('Signing in...');
-            $('#log_in').click();
-        } else {
-            restoreLogInText();
+        var initialLogInText = $('#log_in').text();
+        $('#log_in').text('Verifying credentials...');
+
+        var restoreLogInText = function() {
+            $('#log_in').text(initialLogInText);
         }
+
+        var req = new XMLHttpRequest();
+        req.open('GET', IDM_HOST + '/user', true);
+        req.withCredentials = true;
+        req.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+        req.onload = function() {
+            if (this.status == 200) {
+                $('#log_in').text('Signing in...');
+                $('#log_in').click();
+            } else {
+                restoreLogInText();
+            }
+        }
+        req.onerror = restoreLogInText;
+        req.ontimeout = restoreLogInText;
+        req.onabort = restoreLogInText;
+        req.send();
     }
-    req.onerror = restoreLogInText;
-    req.ontimeout = restoreLogInText;
-    req.onabort = restoreLogInText;
-    req.send();
 
 })()

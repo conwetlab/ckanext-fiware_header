@@ -35,8 +35,10 @@ header.navbar{
 .fiware-logo{
   width: 158px !important;
 }
+
 .filab-logo{
 }
+
 .fiware-logo,
 .filab-logo {
   margin-left: 0px;
@@ -59,7 +61,6 @@ header.navbar{
   margin: 0 0 0 -8px !important;
   padding: 0 !important;
 }
-
 
 .navbar .mobile .dropdown-menu{
   margin-left: -67px;

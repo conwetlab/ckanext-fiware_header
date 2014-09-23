@@ -95,7 +95,7 @@
             {% if c.userobj %}
               <li>
                 <a href="{{ h.url_for(controller='user', action='read', id=c.userobj.name) }}" title="{{ _('View profile') }}">                
-                  <img src="/img/user.png">
+                  {{ h.gravatar((c.userobj.email_hash if c and c.userobj else ''), size=20) }}
                   <span class="name">
                     {{ c.userobj.display_name }}
                   </span>
@@ -130,7 +130,7 @@
                     Sign in
                   </span>
                 </a>
-              </li>  
+              </li>
             {% endif %}
         </ul>
       </nav>

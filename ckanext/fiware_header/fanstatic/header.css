@@ -46,6 +46,7 @@ header.navbar{
 
 .navbar .navbar-inner ul.nav li a img {
   width: 20px;
+  border-radius: 10px;
 }
 
 .navbar .nav .dropdown-toggle .caret {

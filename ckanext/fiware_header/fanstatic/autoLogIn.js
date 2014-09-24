@@ -21,7 +21,7 @@
 
 (function() {
 
-    var IDM_HOST = 'https://account.lab.fi-ware.org'
+    var IDM_HOST = 'https://account.lab.fi-ware.org';
 
     // Avoid loops when the IDM Authentication fails...
     if (document.referrer.indexOf(IDM_HOST + '/authorize') < 0) {

@@ -21,7 +21,7 @@
 
 (function() {
     
-    url = 'https://account.lab.fi-ware.org/assets/signOut.js'
+    url = 'https://account.lab.fiware.org/assets/signOut.js'
 
     // Adding the script tag to the body
     var body = document.getElementsByTagName('body')[0];

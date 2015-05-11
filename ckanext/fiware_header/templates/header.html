@@ -2,7 +2,8 @@
 
 {% block header_account %}
     
-    {% resource 'fiware_header/header.css' %} 
+    {% resource 'fiware_header/style.css' %} 
+    {% resource 'fiware_header/font-awesome.css' %} 
     {% resource 'fiware_header/jquery.js' %}
     {% resource 'fiware_header/loadSignOut.js' %}
 
@@ -95,7 +96,7 @@
                 <li class="username">
                   <a href="{{ h.url_for(controller='user', action='read', id=c.userobj.name) }}" title="{{ _('View profile') }}">                
                     {{ h.gravatar((c.userobj.email_hash if c and c.userobj else ''), size=20) }}
-                    <span class="name">
+                    <span class="username">
                       {{ c.userobj.display_name }}
                     </span>
                   </a>
@@ -103,18 +104,18 @@
 
                 <li class="dropdown">
 
-                  <a href="#" class='dropdown-toggle' data-toggle="dropdown">
-                    <span class="caret"></span>
+                  <a href="#" class='extended-settings' data-toggle="dropdown">
+                    <i class="fa fa-angle-double-down"></i>
                   </a>
 
                   <ul class="dropdown-menu"  id="settings-menu">
                     {% if c.userobj.sysadmin %}
-                        <li class="sysadmin"><a href="{{ h.url_for(controller='admin', action='index') }}">Sysadmin settings</a></li>
+                        <li><a href="{{ h.url_for(controller='admin', action='index') }}">Sysadmin settings</a></li>
                     {% endif %}
-                    <li class="dashboard"><a href="{{ h.url_for(controller='user', action='dashboard') }}">Dashboard</a></li>
+                    <li><a href="{{ h.url_for(controller='user', action='dashboard') }}">Dashboard</a></li>
                     <li class="divider">
                     </li>
-                    <li class="signout">
+                    <li>
                       <a href="#" title="{{ _('Sign out') }}" onclick="Fiware.signOut('data'); return false;">
                         Sign Out
                       </a>

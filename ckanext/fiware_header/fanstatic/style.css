@@ -38,7 +38,8 @@ header.navbar .container-fluid {
 }
 
 .fiware-logo{
-  width: 158px !important;
+  width: 150px !important;
+  height: 37px;
 }
 
 .filab-logo{
@@ -46,8 +47,8 @@ header.navbar .container-fluid {
 
 .fiware-logo,
 .filab-logo {
-  margin-left: 0px;
-  margin-right: 9px;
+  margin-left: 1px;
+  margin-right: 0px;
   margin-top: 4px;
 }
 

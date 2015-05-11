@@ -2,31 +2,67 @@
 
 {% block header_account %}
     
-    {% resource 'fiware_header/header.css' %}
+    {% resource 'fiware_header/header.css' %} 
     {% resource 'fiware_header/jquery.js' %}
     {% resource 'fiware_header/loadSignOut.js' %}
 
     <header class="navbar">
-      <nav class="navbar-inner">
+      <div class="container-fluid">
+        <nav class="navbar-inner">
 
-        <div class="logo-header">
-          <a href="#" class="brand">
-            <img alt="FIWARE" class="fiware-logo" src="/img/Fi-lab.png">
-          </a>
-        </div>
+          <div class="logo-header">
+            <a href="#" class="brand">
+              <img alt="FIWARE" class="fiware-logo" src="/img/Fi-lab.png">
+            </a>
+          </div>
 
-        <div class="dropdown mobile">
-          <a href="#" class='dropdown-toggle' data-toggle="dropdown">
-            <span class="caret"></span> 
-          </a>
+          <div class="dropdown mobile">
+            <a href="#" class='dropdown-toggle' data-toggle="dropdown">
+              <span class="caret"></span> 
+            </a>
 
-          <ul class="dropdown-menu dropdown-menu-header">
+            <ul class="dropdown-menu dropdown-menu-header">
+              <li class="cloud">
+                <a href="http://cloud.lab.fiware.org/">
+                  Cloud
+                </a>
+              </li>
+
+              <li class="store">
+                <a href="http://store.lab.fiware.org/">
+                  Store
+                </a>
+              </li>
+              <li class="mashup">
+                <a href="http://mashup.lab.fiware.org/">
+                  Mashup
+                </a>
+              </li>
+              <li class="data">
+                <a href="https://data.lab.fiware.org/">
+                  Data
+                </a>
+              </li>
+              <li class="account">
+                <a href="https://account.lab.fiware.org/">
+                  Account
+                </a>
+              </li>
+              <li class="help">
+                <a href="http://help.lab.fiware.org/">
+                  Help&info
+                </a>
+              </li>
+            </ul>
+          </div>
+
+
+          <ul class="oil-portal hidden-phone">
             <li class="cloud">
               <a href="http://cloud.lab.fiware.org/">
                 Cloud
               </a>
             </li>
-
             <li class="store">
               <a href="http://store.lab.fiware.org/">
                 Store
@@ -37,7 +73,7 @@
                 Mashup
               </a>
             </li>
-            <li class="data">
+            <li class="data active">
               <a href="https://data.lab.fiware.org/">
                 Data
               </a>
@@ -53,84 +89,50 @@
               </a>
             </li>
           </ul>
-        </div>
 
+          <ul class="nav pull-right">
+              {% if c.userobj %}
+                <li class="username">
+                  <a href="{{ h.url_for(controller='user', action='read', id=c.userobj.name) }}" title="{{ _('View profile') }}">                
+                    {{ h.gravatar((c.userobj.email_hash if c and c.userobj else ''), size=20) }}
+                    <span class="name">
+                      {{ c.userobj.display_name }}
+                    </span>
+                  </a>
+                </li>
 
-        <ul class="oil-portal hidden-phone">
-          <li class="cloud">
-            <a href="http://cloud.lab.fiware.org/">
-              Cloud
-            </a>
-          </li>
-          <li class="store">
-            <a href="http://store.lab.fiware.org/">
-              Store
-            </a>
-          </li>
-          <li class="mashup">
-            <a href="http://mashup.lab.fiware.org/">
-              Mashup
-            </a>
-          </li>
-          <li class="data active">
-            <a href="https://data.lab.fiware.org/">
-              Data
-            </a>
-          </li>
-          <li class="account">
-            <a href="https://account.lab.fiware.org/">
-              Account
-            </a>
-          </li>
-          <li class="help">
-            <a href="http://help.lab.fiware.org/">
-              Help&info
-            </a>
-          </li>
-        </ul>
+                <li class="dropdown">
 
-        <ul class="nav pull-right">
-            {% if c.userobj %}
-              <li>
-                <a href="{{ h.url_for(controller='user', action='read', id=c.userobj.name) }}" title="{{ _('View profile') }}">                
-                  {{ h.gravatar((c.userobj.email_hash if c and c.userobj else ''), size=20) }}
-                  <span class="name">
-                    {{ c.userobj.display_name }}
-                  </span>
-                </a>
-              </li>
+                  <a href="#" class='dropdown-toggle' data-toggle="dropdown">
+                    <span class="caret"></span>
+                  </a>
 
-              <li class="dropdown">
-
-                <a href="#" class='dropdown-toggle' data-toggle="dropdown">
-                  <span class="caret"></span>
-                </a>
-
-                <ul class="dropdown-menu"  id="settings-menu">
-                  {% if c.userobj.sysadmin %}
-                      <li><a href="{{ h.url_for(controller='admin', action='index') }}">Sysadmin settings</a></li>
-                  {% endif %}
-                  <li><a href="{{ h.url_for(controller='user', action='dashboard') }}">Dashboard</a></li>
-                  <li class="divider">
-                  </li>
-                  <li>
-                    <a href="#" title="{{ _('Sign out') }}" onclick="Fiware.signOut('data'); return false;">
-                      Sign Out
-                    </a>
-                  </li>
-                </ul>
-              </li>
-            {% else %}
-              <li>
-                <a href="{{ h.url_for(controller='user', action='login') }}" title="{{ _('Sign in') }}">                
-                  <span id="log_in" class="name" >
-                    Sign in
-                  </span>
-                </a>
-              </li>
-            {% endif %}
-        </ul>
-      </nav>
+                  <ul class="dropdown-menu"  id="settings-menu">
+                    {% if c.userobj.sysadmin %}
+                        <li class="sysadmin"><a href="{{ h.url_for(controller='admin', action='index') }}">Sysadmin settings</a></li>
+                    {% endif %}
+                    <li class="dashboard"><a href="{{ h.url_for(controller='user', action='dashboard') }}">Dashboard</a></li>
+                    <li class="divider">
+                    </li>
+                    <li class="signout">
+                      <a href="#" title="{{ _('Sign out') }}" onclick="Fiware.signOut('data'); return false;">
+                        Sign Out
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+              {% else %}
+                <li>
+                  <a href="{{ h.url_for(controller='user', action='login') }}" title="{{ _('Sign in') }}">                
+                    <span id="log_in" class="name" >
+                      Sign in
+                    </span>
+                  </a>
+                </li>
+              {% endif %}
+          </ul>
+        </nav>
+      </div>
     </header>
 
 {% endblock %}

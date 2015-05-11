@@ -9,16 +9,22 @@ New header style
 header.navbar{
   display: block;
   background-color: #f4f4f4;
-  padding: 1px 10px 1px;
   border-bottom: 1px solid #F2F2F2;
   -moz-box-shadow: 0px 1px 8px rgba(50, 51, 51, 0.15);
   -webkit-box-shadow: 0px 1px 8px rgba(50, 51, 51, 0.15);
   box-shadow: 0px 1px 8px rgba(50, 51, 51, 0.15);
-  width: 96%;
-  height: 37px;
-  padding: 1px 2% 1px;
+  min-height: 42px;
   z-index: 2000000;
   margin-bottom: 5px;
+}
+
+header.navbar .container-fluid {
+  max-width: 1200px;
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+  box-sizing: border-box;
 }
 
 .navbar nav.navbar-inner{
@@ -91,7 +97,12 @@ header.navbar{
 
 .navbar ul.oil-portal li{
   display: inline-block;
-  padding: 12px 18px 8px;
+  padding: 10px 15px;
+  padding-top: 24px;
+  padding-bottom: 18px;
+  line-height: 0;
+  height: 0;
+  box-sizing: border-box;
 }
 
 .navbar ul.oil-portal li:hover{
@@ -101,7 +112,7 @@ header.navbar{
 }
 
 .navbar ul.oil-portal li a{
-  color: #555;
+  color: #777;
 }
 
 .navbar ul.oil-portal li a:hover{
@@ -110,7 +121,6 @@ header.navbar{
 
 .navbar ul.oil-portal li.active{
   background-color: #f9f9f9;
-  height: 18px;
 }
 
 .navbar ul.oil-portal li.active a{
@@ -161,6 +171,10 @@ header.navbar{
   background-color: rgba(152, 152, 152, 0.1);
   background-image: none;
   color:#333;
+}
+
+header.navbar li[class] > a {
+  font-family: "NeoTechRegular";
 }
 
 .navbar .nav-tabs, .navbar .nav-tabs li a, .navbar .nav-tabs > .active > a, .navbar .nav-tabs > .active > a:hover {
@@ -248,4 +262,28 @@ header.navbar{
     margin-left: 2px;
     margin-top: 10px;
   }
+}
+
+/*************______________typography___*******/
+
+
+@font-face {
+  font-family: "NeoTechRegular";
+  font-style: normal;
+  src: url('/fonts/neotechstd/neotechstd-regular.eot');
+    src: url('/fonts/neotechstd/neotechstd-regular.eot') format('embedded-opentype'),
+         url('/fonts/neotechstd/neotechstd-regular.woff') format('woff'),
+         url('/fonts/neotechstd/neotechstd-regular.ttf') format('truetype'),
+         url('/fonts/neotechstd/neotechstd-regular.svg#NeoTechStdMedium') format('svg');
+}
+
+
+@font-face {
+  font-family: "NeoTechMedium";
+  font-style: normal;
+  src: url('/fonts/neotechstd/neotechstd-medium.eot');
+    src: url('/fonts/neotechstd/neotechstd-medium.eot') format('embedded-opentype'),
+         url('/fonts/neotechstd/neotechstd-medium.woff') format('woff'),
+         url('/fonts/neotechstd/neotechstd-medium.ttf') format('truetype'),
+         url('/fonts/neotechstd/neotechstd-medium.svg#NeoTechStdMedium') format('svg');
 }

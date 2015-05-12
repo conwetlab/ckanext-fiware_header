@@ -91,32 +91,29 @@ header.navbar .container-fluid {
   height: 36px;
   padding: 0px;
   margin-bottom: 0px;
-  margin-left: 2px;
+  margin-left: 0px;
   float: left;
 }
 
 .navbar ul.oil-portal li{
-  display: inline-block;
-  padding: 10px 13px;
+  display: block;
+  float: left;
+  /*padding: 10px 13px;
   padding-top: 23px;
-  padding-bottom: 18px;
+  padding-bottom: 18px;*/
   line-height: 0;
-  height: 0;
   box-sizing: border-box;
-}
-
-.navbar ul.oil-portal li:hover{
-  background-color: rgba(152, 152, 152, 0.1);
-  background-image: none;
-  color: #60C1CF;
 }
 
 .navbar ul.oil-portal li a{
   color: #777;
+  padding-bottom: 18px;
+  display: block;
+  padding: 24px 15px 18px 15px;
 }
 
 .navbar ul.oil-portal li a:hover{
-  color: #049cdb;
+  background-color: rgba(152, 152, 152, 0.1);
 }
 
 .navbar ul.oil-portal li.active{
@@ -125,6 +122,7 @@ header.navbar .container-fluid {
 
 .navbar ul.oil-portal li.active a{
   color: #002D67;
+  background-color: #f9f9f9;
 }
 
 .navbar .mobile{
@@ -189,6 +187,7 @@ header.navbar .container-fluid li[class] > a {
 
 .extended-settings {
     padding: 10px 0px 10px !important;
+    color: #193B6B !important;
 }
 
 .username {

@@ -189,7 +189,7 @@ header.navbar .container-fluid li[class] > a {
   font-size: 13px;
   padding: 13px 0px 10px !important;
   color: #193B6B !important;
-  margin-left: -10px;
+  margin-left: -11px;
 }
 
 .extended-settings:hover {
@@ -207,7 +207,7 @@ header.navbar .container-fluid li[class] > a {
 }
 
 .right-aligned {
-  margin-right: -2px !important;
+  margin-right: -3px !important;
 }
 
 @media (max-width: 767px){

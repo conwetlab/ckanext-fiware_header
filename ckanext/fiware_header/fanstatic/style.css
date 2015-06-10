@@ -295,18 +295,18 @@ footer.footer-main {
   /* Set the fixed height of the footer here */
   height: 50px;
   font-size: 12px;
-  border-top: 2px solid rgb(72, 185, 201);
+  border-top: 1px solid rgb(72, 185, 201);
   left: 0;
   right: 0;
 }
 footer.footer-main:before {
   content: "";
   display: block;
-  border-top: 2px solid #F2E826;
+  border-top: 1px solid #F2E826;
 }
 
 .footer-main .container-fluid{
-  border-top: 2px solid #193B6B;
+  border-top: 1px solid #193B6B;
 }
 
 .footer-main .cred{
